@@ -1,0 +1,23 @@
+{
+  "name": "belugaswap-contracts",
+  "version": "1.0.0",
+  "description": "This repository contains all of Belugaswap's smart contracts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/belugaswap/belugaswap-contracts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/belugaswap/belugaswap-contracts/issues"
+  },
+  "homepage": "https://github.com/belugaswap/belugaswap-contracts#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^3.3.0"
+  }
+}
