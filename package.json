@@ -18,6 +18,10 @@
   },
   "homepage": "https://github.com/belugaswap/belugaswap-contracts#readme",
   "dependencies": {
-    "@openzeppelin/contracts": "^3.3.0"
+    "@openzeppelin/contracts": "^3.3.0",
+    "@openzeppelin/contracts-upgradeable": "^3.3.0"
+  },
+  "devDependencies": {
+    "@openzeppelin/hardhat-upgrades": "^1.4.3"
   }
 }
