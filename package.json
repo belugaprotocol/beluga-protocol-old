@@ -22,6 +22,12 @@
     "@openzeppelin/contracts-upgradeable": "^3.3.0"
   },
   "devDependencies": {
-    "@openzeppelin/hardhat-upgrades": "^1.4.3"
+    "@nomiclabs/buidler": "^1.4.8",
+    "@nomiclabs/buidler-ethers": "^2.0.2",
+    "@nomiclabs/buidler-waffle": "^2.1.0",
+    "@openzeppelin/hardhat-upgrades": "^1.4.3",
+    "chai": "^4.2.0",
+    "ethereum-waffle": "^3.2.1",
+    "ethers": "^5.0.24"
   }
 }
