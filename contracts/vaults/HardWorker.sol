@@ -1,10 +1,10 @@
 pragma solidity ^0.6.12;
 
-import "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/math/SafeMathUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/token/ERC20/SafeERC20Upgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/Address.sol";
+import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 // @title Hardworker v1.0
 // @notice Distributes vault fees to BELUGA stakers
@@ -19,10 +19,10 @@ interface IUniswapRouter {
     ) external returns (uint[] memory amounts);
 }
 
-contract Hardworker is OwnableUpgradeable {
-    using SafeMathUpgradeable for uint256;
-    using AddressUpgradeable for address;
-    using SafeERC20Upgradeable for IERC20Upgradeable;
+contract HardWorker is Ownable {
+    using SafeMath for uint256;
+    using Address for address;
+    using SafeERC20 for IERC20;
 
     address public stakingPool;
     address public rewardToken;
@@ -34,7 +34,7 @@ contract Hardworker is OwnableUpgradeable {
 
     // @notice Distributes rewards to stakers
     function rewardToStakers(uint256 amount) public onlyOwner {
-        IERC20Upgradeable(rewardToken).safeTransfer(stakingPool, amount);
+        IERC20(rewardToken).safeTransfer(stakingPool, amount);
     }
 
     // @notice Allows owner to set the staking pool
