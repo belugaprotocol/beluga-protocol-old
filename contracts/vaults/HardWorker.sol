@@ -19,6 +19,10 @@ interface IUniswapRouter {
     ) external returns (uint[] memory amounts);
 }
 
+interface IRewardPool {
+    function notifyRewardAmount(uint256 rewards) external;
+}
+
 contract HardWorker is Ownable {
     using SafeMath for uint256;
     using Address for address;
@@ -26,6 +30,11 @@ contract HardWorker is Ownable {
 
     address public stakingPool;
     address public rewardToken;
+
+    constructor(address _stakingPool, address _rewardToken) public {
+        stakingPool = _stakingPool;
+        rewardToken = _rewardToken;
+    }
 
     // @notice Swaps tokens the contract owns
     function swapTokens(address router, uint256 amount, address[] calldata route) public onlyOwner {
@@ -35,6 +44,7 @@ contract HardWorker is Ownable {
     // @notice Distributes rewards to stakers
     function rewardToStakers(uint256 amount) public onlyOwner {
         IERC20(rewardToken).safeTransfer(stakingPool, amount);
+        IRewardPool(stakingPool).notifyRewardAmount(amount);
     }
 
     // @notice Allows owner to set the staking pool
@@ -45,6 +55,11 @@ contract HardWorker is Ownable {
     // @notice Allows owner to set the reward token
     function setRewardToken(address token) public onlyOwner {
         rewardToken = token;
+    }
+
+    // @notice Function to transfer tokens out
+    function transferOut(address token, address to, address amount) public onlyOwner {
+        IERC20(token).safeTransfer(to, amount);
     }
 
 }
