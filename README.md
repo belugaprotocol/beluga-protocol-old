@@ -8,7 +8,6 @@ This repository contains all of Belugaswap's smart contracts
 
 ## Pools
 | Pool    |      Stake Token      |  Reward Token | Reward Pool Contract Link |
-
 |-----------|:----------------------|--------------:|:----------------:|
 | Fee Staking | BELUGA | BELUGA | [0x55B53793010183D90a72239478983861daBD816E](https://bscscan.com/address/0x55B53793010183D90a72239478983861daBD816E#code) |
 | CAKE Pool  | CAKE | BELUGA | [0x62a56836c8caDAA074B3b06285d91FEf3eF124E0](https://bscscan.com/address/0x62a56836c8caDAA074B3b06285d91FEf3eF124E0) |
