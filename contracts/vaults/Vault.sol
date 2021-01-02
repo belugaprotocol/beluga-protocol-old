@@ -1015,6 +1015,7 @@ contract BelugaVault is ERC20, Ownable {
     address public strategy;
     // The token the vault accepts and looks to maximize.
     IERC20 public token;
+    // Timelock smart contract for changing strategies
     Timelock public timelock;
 
     /**
@@ -1134,4 +1135,12 @@ contract BelugaVault is ERC20, Ownable {
 
         token.safeTransfer(msg.sender, r);
     }
+
+    function setStrategy(address _strat) public {
+        if(address(strategy) != address(0)) {
+            require(msg.sender == address(timelock));
+            strategy = _strat;
+        }
+    }
+
 }
