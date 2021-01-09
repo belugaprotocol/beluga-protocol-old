@@ -6,6 +6,10 @@ This repository contains all of Belugaswap's smart contracts
 - Timelock: https://bscscan.com/address/0x7de7390a77dd4e0abbd579cc7685c5ea4bca9475
 - Governor: https://bscscan.com/address/TBD
 
+### AMM
+- Belugaswap Factory: https://bscscan.com/TBD
+- Belugaswap Router: https://bscscan.com/TBD
+
 ## Pools
 | Pool    |      Stake Token      |  Reward Token | Reward Pool Contract Link |
 |-----------|:----------------------|--------------:|:----------------:|
