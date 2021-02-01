@@ -631,7 +631,7 @@ contract LPTokenWrapper {
 // changing the duration of rewards, defining the LP token in the
 // constructor, defining the reward token and banning smart contracts.
 
-contract LPRewards is LPTokenWrapper, IRewardDistributionRecipient, Ownable {
+contract LPRewards is LPTokenWrapper, IRewardDistributionRecipient {
     IERC20 public earnToken;
     uint256 public DURATION;
 

@@ -994,17 +994,13 @@ interface IStrategy {
 
 pragma solidity ^0.6.0;
 
-
-
-
-
-
-
 /**
  * @dev Implementation of a vault to deposit funds for yield optimizing.
  * This is the contract that receives funds and that users interface with.
  * The yield optimizing strategy itself is implemented in a separate 'Strategy.sol' contract.
  */
+
+// Originally forked from Beefy/BIFI.
 
 contract BelugaVault is ERC20, Ownable {
     using SafeERC20 for IERC20;
@@ -1024,13 +1020,11 @@ contract BelugaVault is ERC20, Ownable {
      * This token is minted when someone does a deposit. It is burned in order
      * to withdraw the corresponding portion of the underlying assets.
      * @param _token the token to maximize.
-     * @param _strategy the address of the strategy.
      * @param _name the name of the vault token.
      * @param _symbol the symbol of the vault token.
      */
     constructor (
         address _token, 
-        address _strategy, 
         string memory _name, 
         string memory _symbol 
     ) public ERC20(
@@ -1038,7 +1032,6 @@ contract BelugaVault is ERC20, Ownable {
         string(abi.encodePacked("b", _symbol))
     ) {
         token = IERC20(_token);
-        strategy = _strategy;
     }
 
     /**
@@ -1107,6 +1100,14 @@ contract BelugaVault is ERC20, Ownable {
     }
 
     /**
+     * @dev Function to harvest yields on the strategy contract. This is
+     * to simplify harvesting on the frontend.
+     */
+    function harvest() public {
+        IStrategy(strategy).harvest();
+    }
+
+    /**
      * @dev A helper function to call withdraw() with all the sender's funds.
      */
     function withdrawAll() external {
@@ -1136,10 +1137,20 @@ contract BelugaVault is ERC20, Ownable {
         token.safeTransfer(msg.sender, r);
     }
 
+    /**
+     * @dev Function to change the strategy contract. This is
+     * subject to a Timelock.
+     */
     function setStrategy(address _strat) public {
         if(address(strategy) != address(0)) {
             require(msg.sender == address(timelock));
             strategy = _strat;
+    }
+
+    function setTimelock(Timelock _newTimelock) public {
+        if(address(timelock) != address(0)) {
+            require(msg.sender == address(timelock));
+            timelock = _newTimelock;
         }
     }
 

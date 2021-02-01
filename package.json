@@ -4,7 +4,9 @@
   "description": "This repository contains all of Belugaswap's smart contracts",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "npx buidler compile",
+    "compile-farms": "npx buidler --config ./buidler.configfarms.js compile"
   },
   "repository": {
     "type": "git",
