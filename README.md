@@ -1,5 +1,8 @@
-# Belugaswap Contracts
-This repository contains all of Belugaswap's smart contracts
+# NOTICE
+These contracts are now deprecated. We are sunsetting the current contracts in favor of several improvments. We have moved our new repository [here](https://github.com/belugaprotocol/beluga-protocol)
+
+# Beluga Protocol Contracts
+This repository contains all of Belugaprotocol's smart contracts
 
 ## Deployed Contracts
 - BelugaToken: https://bscscan.com/address/0x181de8c57c4f25eba9fd27757bbd11cc66a55d31#code
